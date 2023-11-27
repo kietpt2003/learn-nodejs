@@ -1,31 +1,17 @@
 const mysql = require('mysql2');
-const path = require('path');
-const env = require('dotenv');
-env.config();
+require('dotenv').config();
 console.log('check .env', process.env);
 const express = require('express');
 const app = express();
 const port = process.env.PORT;
+const configViewEngine = require('./config/viewEngine');
+const webRoutes = require('./routes/web');
 
-app.set('views', path.join(__dirname, 'viewsfolder'));
-app.set('view engine', 'ejs');
+//config template engine and config static files
+configViewEngine(app);
 
-//config static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', function (req, res) {
-    res.send('Hello World');
-})
-
-app.get('/test', function (req, res) {
-    res.send('test route');
-})
-
-app.get('/kiet', function (req, res) {
-    res.render('sample.ejs');
-})
-
-
+//Khai báo routes
+app.use('/', webRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
