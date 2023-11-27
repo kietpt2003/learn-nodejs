@@ -10,6 +10,9 @@ const port = process.env.PORT;
 app.set('views', path.join(__dirname, 'viewsfolder'));
 app.set('view engine', 'ejs');
 
+//config static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', function (req, res) {
     res.send('Hello World');
 })
