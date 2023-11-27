@@ -1,15 +1,23 @@
-const http = require('http');
+const mysql = require('mysql2')
+const express = require('express')
+const app = express();
+const port = 8081
 
-const hostname = 'localhost';
-const port = 3000;
-// get the client
-const mysql = require('mysql2');
+app.get('/', function (req, res) {
+    res.send('Hello World')
+})
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello, World!\n');
-});
+app.get('/test', function (req, res) {
+    res.send('test route')
+})
+
+app.get('/kiet', function (req, res) {
+    res.send('<h1>test kiet route</h1>')
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
 
 // create the connection to database
 const connection = mysql.createConnection({
@@ -28,7 +36,3 @@ connection.query(
         console.log("fields: ", fields); // fields contains extra meta data about results, if available
     }
 );
-
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-}); 
