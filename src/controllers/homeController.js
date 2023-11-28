@@ -24,8 +24,13 @@ const getKiet = (req, res) => {
     res.render('sample.ejs');
 }
 
+const postCreateUser = (req, res) => {
+    res.send(`create a new user ${req.body.mail}`);
+}
+
 module.exports = {
     getHomepage,
     getTest,
-    getKiet
+    getKiet,
+    postCreateUser
 }
