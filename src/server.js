@@ -1,5 +1,4 @@
 require('dotenv').config();
-console.log('check .env', process.env);
 const express = require('express');
 const app = express();
 const port = process.env.PORT;
@@ -18,7 +17,7 @@ connection.query(
     'SELECT * FROM Users u',
     function (err, results, fields) {
         console.log("result: ", results); // results contains rows returned by server
-        console.log("fields: ", fields); // fields contains extra meta data about results, if available
+        // console.log("fields: ", fields); // fields contains extra meta data about results, if available
     }
 );
 
