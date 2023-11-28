@@ -50,15 +50,36 @@
     cursor: pointer;
   }
 
+  .title {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   table {
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
   }
-  
-  th, td {
-    padding: 8px;
+
+  .tableHead {
+    color: #f2f2f2;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #f2f2f2;
+    background-color: #04AA6D;
+  }
+
+  .tableRow {
+    color: #f2f2f2;
+    text-align: center;
+    background-color: #333;
   }
   
-  tr:hover {background-color: #04AA6D;}
+  td, th {
+    padding: 8px;
+    border: 1px solid #04AA6D;
+  }
+  
+  .tableRow:hover {
+    background-color: #ddd;
+    color: black;
+  }

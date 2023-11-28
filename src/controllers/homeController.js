@@ -24,18 +24,30 @@ const getCreateForm = (req, res) => {
     res.render('create.ejs');
 }
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
     let { mail, myName, myCity } = req.body;
 
-    connection.query(
+    //query dạng callback
+    // connection.query(
+    //     `INSERT INTO Users (email, name, city)
+    //     VALUES (?, ?, ?)`,
+    //     [mail, myName, myCity],
+    //     function (err, results) {
+    //         console.log(results);
+    //         res.send(`Create a new user Success!`);
+    //     }
+    // );
+
+    const [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city)
         VALUES (?, ?, ?)`,
         [mail, myName, myCity],
-        function (err, results) {
-            console.log(results);
-            res.send(`Create a new user Success!`);
-        }
     );
+    if (results) {
+        res.send(`Create a new user Success!`);
+    } else {
+        res.send(`Create a new user Fail!`);
+    }
 }
 
 module.exports = {
