@@ -19,9 +19,9 @@ const getTest = (req, res) => {
     res.send('test route');
 }
 
-const getKiet = (req, res) => {
+const getCreateForm = (req, res) => {
     // res.send('<h1>kiet route</h1>');
-    res.render('sample.ejs');
+    res.render('create.ejs');
 }
 
 const postCreateUser = (req, res) => {
@@ -41,6 +41,6 @@ const postCreateUser = (req, res) => {
 module.exports = {
     getHomepage,
     getTest,
-    getKiet,
+    getCreateForm,
     postCreateUser
 }
