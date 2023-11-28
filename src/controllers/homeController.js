@@ -1,17 +1,18 @@
 const connection = require("../config/database");
 
 const getHomepage = (req, res) => {
-    //process data
-    //call model
-    let users = [];
-    connection.query(
-        'SELECT * FROM Users u',
-        function (err, results, fields) {
-            users = results;
-            console.log("result: ", users); // results contains rows returned by server
-            res.send(JSON.stringify(users));
-        }
-    );
+    // //process data
+    // //call model
+    // let users = [];
+    // connection.query(
+    //     'SELECT * FROM Users u',
+    //     function (err, results, fields) {
+    //         users = results;
+    //         console.log("result: ", users); // results contains rows returned by server
+    //         res.send(JSON.stringify(users));
+    //     }
+    // );
+    return res.render('home.ejs');
 }
 
 const getTest = (req, res) => {
