@@ -13,10 +13,6 @@ configViewEngine(app);
 //Khai báo routes
 app.use('/', webRoutes);
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-})
-
 // create the connection to database
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -34,3 +30,7 @@ connection.query(
         console.log("fields: ", fields); // fields contains extra meta data about results, if available
     }
 );
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+})

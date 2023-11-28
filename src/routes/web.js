@@ -1,15 +1,11 @@
+const { getHomepage, getTest, getKiet } = require("../controllers/homeController");
+
 const router = require("express").Router();
 
-router.get('/', function (req, res) {
-    res.send('Hello World');
-})
+router.get('/', getHomepage);
 
-router.get('/test', function (req, res) {
-    res.send('test route');
-})
+router.get('/test', getTest);
 
-router.get('/kiet', function (req, res) {
-    res.render('sample.ejs');
-})
+router.get('/kiet', getKiet);
 
 module.exports = router;
