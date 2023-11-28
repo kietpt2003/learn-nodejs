@@ -25,7 +25,17 @@ const getKiet = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-    res.send(`create a new user ${req.body.mail}`);
+    let { mail, myName, myCity } = req.body;
+
+    connection.query(
+        `INSERT INTO Users (email, name, city)
+        VALUES (?, ?, ?)`,
+        [mail, myName, myCity],
+        function (err, results) {
+            console.log(results);
+            res.send(`Create a new user Success!`);
+        }
+    );
 }
 
 module.exports = {
