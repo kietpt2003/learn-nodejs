@@ -12,43 +12,60 @@
         <a class="active" href="/">Home</a>
         <a href="/create">Create Users</a>
     </div>
+    <%= JSON.stringify(listUsers) %>
+        <h2 class="title">List Users</h2>
 
-    <h2 class="title">List Users</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th class="tableHead">ID</th>
-                <th class="tableHead">Mail</th>
-                <th class="tableHead">Name</th>
-                <th class="tableHead">City</th>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tableHead">ID</th>
+                    <th class="tableHead">Mail</th>
+                    <th class="tableHead">Name</th>
+                    <th class="tableHead">City</th>
+                    <th class="tableHead">Actions</th>
+                </tr>
+            </thead>
+            <tr class="tableRow">
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+                <td>Ho Chi Minh</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
             </tr>
-        </thead>
-        <tr class="tableRow">
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-            <td>Ho Chi Minh</td>
-        </tr>
-        <tr class="tableRow">
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-            <td>Ho Chi Minh</td>
-        </tr>
-        <tr class="tableRow">
-            <td>Adam</td>
-            <td>Johnson</td>
-            <td>67</td>
-            <td>Ho Chi Minh</td>
-        </tr>
-        <tr class="tableRow">
-            <td>Bo</td>
-            <td>Nilson</td>
-            <td>35</td>
-            <td>Ho Chi Minh</td>
-        </tr>
-    </table>
+            <tr class="tableRow">
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+                <td>Ho Chi Minh</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr class="tableRow">
+                <td>Adam</td>
+                <td>Johnson</td>
+                <td>67</td>
+                <td>Ho Chi Minh</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr class="tableRow">
+                <td>Bo</td>
+                <td>Nilson</td>
+                <td>35</td>
+                <td>Ho Chi Minh</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </table>
 </body>
 
 </html>
