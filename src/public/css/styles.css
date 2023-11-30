@@ -83,3 +83,7 @@
     background-color: #ddd;
     color: black;
   }
+
+  .d-none {
+    display: none;
+  }

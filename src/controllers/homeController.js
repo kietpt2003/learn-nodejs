@@ -59,10 +59,22 @@ const postCreateUser = async (req, res) => {
     }
 }
 
+const postUpdateUser = async (req, res) => {
+    let { userID, mail, myName, myCity } = req.body;
+
+    const isSuccess = await updateUser({ userID, mail, myName, myCity });
+
+    if (isSuccess) {
+        res.redirect('/');
+    }
+    res.send('Update User Fail!!');
+}
+
 module.exports = {
     getHomepage,
     getTest,
     getCreateForm,
     postCreateUser,
-    getUpdatePage
+    getUpdatePage,
+    postUpdateUser
 }
