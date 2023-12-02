@@ -1,21 +1,27 @@
-const { getHomepage, getTest, getCreateForm, postCreateUser, getUpdatePage, postUpdateUser, postDeleteUser, postHandleDeleteUser } = require("../controllers/homeController");
+import { getHomepage, getTest, getCreateForm, postCreateUser, getUpdatePage, postUpdateUser, postDeleteUser, postHandleDeleteUser } from "../controllers/homeController"
 
 const router = require("express").Router();
 
-router.get('/', getHomepage);
+const iniWebRoute = (app) => {
+    router.get('/', getHomepage);
 
-router.get('/test', getTest);
+    router.get('/test', getTest);
 
-router.get('/create', getCreateForm);
+    router.get('/create', getCreateForm);
 
-router.get('/update/:id', getUpdatePage);
+    router.get('/update/:id', getUpdatePage);
 
-router.post('/update-user/', postUpdateUser);
+    router.post('/update-user/', postUpdateUser);
 
-router.post('/create-user', postCreateUser);
+    router.post('/create-user', postCreateUser);
 
-router.post('/delete-user/:id', postDeleteUser);
+    router.post('/delete-user/:id', postDeleteUser);
 
-router.post('/delete-user', postHandleDeleteUser);
+    router.post('/delete-user', postHandleDeleteUser);
 
-module.exports = router;
+    return app.use('/', router);
+}
+
+export {
+    iniWebRoute
+};
