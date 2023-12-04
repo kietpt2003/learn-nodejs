@@ -5,7 +5,7 @@ const getHomepage = async (req, res) => {
     // //process data
     // //call model
     // let users = [];
-    // connection.query(
+    // connection.execute(
     //     'SELECT * FROM Users u',
     //     function (err, results, fields) {
     //         users = results;
@@ -37,7 +37,7 @@ const postCreateUser = async (req, res) => {
     let { mail, myName, myCity } = req.body;
 
     //query dạng callback
-    // connection.query(
+    // connection.execute(
     //     `INSERT INTO Users (email, name, city)
     //     VALUES (?, ?, ?)`,
     //     [mail, myName, myCity],
@@ -47,7 +47,7 @@ const postCreateUser = async (req, res) => {
     //     }
     // );
 
-    const [results, fields] = await connection.query(
+    const [results, fields] = await connection.execute(
         `INSERT INTO Users (email, name, city)
         VALUES (?, ?, ?)`,
         [mail, myName, myCity],

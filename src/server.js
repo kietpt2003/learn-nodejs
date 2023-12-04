@@ -4,10 +4,10 @@ const app = express();
 const port = process.env.PORT;
 const configViewEngine = require('./config/viewEngine');
 const { iniWebRoute } = require('./routes/web');
+const { configData } = require('./config/configSendData');
 
-//config req.body
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); //for form data
+//config send data
+configData(app);
 
 //config template engine and config static files
 configViewEngine(app);
