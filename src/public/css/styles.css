@@ -87,3 +87,16 @@
   .d-none {
     display: none;
   }
+
+  .btn-save {
+    margin: 15px 0px 0px 0px;
+    cursor: pointer;
+  }
+
+  .upload-file-container {
+    padding: 15px;
+  }
+
+  .upload-file-container label {
+    display: block;
+  }
