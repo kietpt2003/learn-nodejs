@@ -24,6 +24,19 @@ const updateUser = async (user) => {
     return false;
 }
 
+const createNewUser = async (user) => {
+    const [results, fields] = await connection.execute(
+        `INSERT INTO Users (email, name, city)
+        VALUES (?, ?, ?)`,
+        [user.mail, user.myName, user.myCity],
+    );
+    if (results) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 const deleteUserByID = async (userID) => {
     const [results, fields] = await connection.execute(
         `DELETE FROM Users WHERE id = ?`,
@@ -36,6 +49,7 @@ const deleteUserByID = async (userID) => {
 }
 
 module.exports = {
+    createNewUser,
     getAllUsers,
     getUserByID,
     updateUser,
