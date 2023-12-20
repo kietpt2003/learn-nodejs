@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /create
+Allow: /upload
+Disallow: /update
+Sitemap: http://kietpt.vn/sitemap.xml

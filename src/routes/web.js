@@ -1,4 +1,4 @@
-import { getHomepage, getTest, getCreateForm, postCreateUser, getUpdatePage, postUpdateUser, postDeleteUser, postHandleDeleteUser, getUploadPage, handleUploadFile } from "../controllers/homeController"
+import { getHomepage, getTest, getCreateForm, postCreateUser, getUpdatePage, postUpdateUser, postDeleteUser, postHandleDeleteUser, getUploadPage, handleUploadFile, handleUploadMultipleFiles } from "../controllers/homeController"
 import multer from "multer";
 const path = require('path');
 const router = require("express").Router();
@@ -45,6 +45,22 @@ const iniWebRoute = (app) => {
     router.get('/upload', getUploadPage);
 
     router.post('/upload-profile-pic', upload.single('profile_pic'), handleUploadFile);
+
+    router.post('/upload-multiples-images', (req, res, next) => {
+        upload.array('multiple_images', 3)(req, res, (err) => {
+            if (err instanceof multer.MulterError && err.code === "LIMIT_UNEXPECTED_FILE") {
+                // handle multer file limit error here
+                res.send('LIMIT_UNEXPECTED_FILE')
+            } else if (err) {
+                res.send(err)
+            }
+
+            else {
+                // make sure to call next() if all was well
+                next();
+            }
+        })
+    }, handleUploadMultipleFiles);
 
     return app.use('/', router);
 }

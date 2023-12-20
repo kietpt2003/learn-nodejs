@@ -1,4 +1,3 @@
-import multer from "multer";
 const connection = require("../config/database");
 const { getAllUsers, updateUser, getUserByID, deleteUserByID } = require("../services/CRUDService");
 
@@ -94,25 +93,37 @@ const getUploadPage = async (req, res) => {
     return res.render('uploadFile.ejs');
 }
 
-const upload = multer().single('profile_pic');
-
 const handleUploadFile = async (req, res) => {
     console.log(req.file);
 
-    upload(req, res, function (err) {
-        // req.file contains information of uploaded file
-        // req.body contains information of text fields, if there were any
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    }
+    else if (!req.file) {
+        return res.send('Please select an image to upload');
+    }
 
-        if (req.fileValidationError) {
-            return res.send(req.fileValidationError);
-        }
-        else if (!req.file) {
-            return res.send('Please select an image to upload');
-        }
+    // Display uploaded image for user validation
+    res.send(`You have uploaded this image: <hr/><img src="images/${req.file.filename}" width="500"><hr /><a href="/upload">Upload another image</a>`);
+}
 
-        // Display uploaded image for user validation
-        res.send(`You have uploaded this image: <hr/><img src="images/${req.file.filename}" width="500"><hr /><a href="/upload">Upload another image</a>`);
-    });
+const handleUploadMultipleFiles = async (req, res) => {
+    console.log(req.files);
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    }
+    else if (!req.files) {
+        return res.send('Please select images to upload');
+    }
+    let result = "You have uploaded these images: <hr />";
+    const files = req.files;
+
+    // Loop through all the uploaded images and display them on frontend
+    for (let index = 0; index < files.length; index++) {
+        result += `<img src="images/${files[index].filename}" width="300" style="margin-right: 20px;">`;
+    }
+    result += '<hr/><a href="/upload">Upload more images</a>';
+    res.send(result);
 }
 
 module.exports = {
@@ -125,5 +136,6 @@ module.exports = {
     postDeleteUser,
     postHandleDeleteUser,
     getUploadPage,
-    handleUploadFile
+    handleUploadFile,
+    handleUploadMultipleFiles
 }
